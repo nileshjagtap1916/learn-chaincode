@@ -181,6 +181,10 @@ func (t *RegionChaincode)  GetPolicyDetails(stub shim.ChaincodeStubInterface, Po
 			objFound = true
 		}
 	}
+	if PolicyId == "" {
+		requiredObj = PolicyTxObjects
+		objFound = true
+	}
 	if objFound {
 		res, err := json.Marshal(requiredObj)
 		if err != nil {
