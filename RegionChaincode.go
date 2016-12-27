@@ -172,6 +172,14 @@ func (t *RegionChaincode)  GetPolicyDetails(stub shim.ChaincodeStubInterface, Po
 	length := len(PolicyTxObjects)
 	fmt.Printf("Output from chaincode: %s\n", PolicyTxsAsBytes)
 	
+	if PolicyId == "" {
+		res, err := json.Marshal(PolicyTxObjects)
+		if err != nil {
+		return nil, errors.New("Failed to Marshal the required Obj")
+		}
+		return res, nil
+	}
+	
 	objFound = false
 	// iterate
 	for i := 0; i < length; i++ {
@@ -181,10 +189,7 @@ func (t *RegionChaincode)  GetPolicyDetails(stub shim.ChaincodeStubInterface, Po
 			objFound = true
 		}
 	}
-	if PolicyId == "" {
-		requiredObj = PolicyTxObjects
-		objFound = true
-	}
+	
 	if objFound {
 		res, err := json.Marshal(requiredObj)
 		if err != nil {
