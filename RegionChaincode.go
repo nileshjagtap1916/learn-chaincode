@@ -168,6 +168,7 @@ func (t *RegionChaincode)  GetPolicyDetails(stub shim.ChaincodeStubInterface, Po
 		return nil, errors.New("Failed to get Merchant Transactions")
 	}
 	var PolicyTxObjects []RegionData
+	var PolicyTxObjects1 []RegionData
 	json.Unmarshal(PolicyTxsAsBytes, &PolicyTxObjects)
 	length := len(PolicyTxObjects)
 	fmt.Printf("Output from chaincode: %s\n", PolicyTxsAsBytes)
@@ -185,13 +186,14 @@ func (t *RegionChaincode)  GetPolicyDetails(stub shim.ChaincodeStubInterface, Po
 	for i := 0; i < length; i++ {
 		obj := PolicyTxObjects[i]
 		if PolicyId == obj.POLICY {
-			requiredObj = obj
+			PolicyTxObjects1 = append(PolicyTxObjects1,obj)
+			//requiredObj = obj
 			objFound = true
 		}
 	}
 	
 	if objFound {
-		res, err := json.Marshal(requiredObj)
+		res, err := json.Marshal(PolicyTxObjects1)
 		if err != nil {
 		return nil, errors.New("Failed to Marshal the required Obj")
 		}
