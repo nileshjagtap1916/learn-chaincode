@@ -161,7 +161,7 @@ func (t *RegionChaincode) Query(stub shim.ChaincodeStubInterface,function string
 
 func (t *RegionChaincode)  GetPolicyDetails(stub shim.ChaincodeStubInterface, PolicyId string) ([]byte, error) {
 	
-	var requiredObj RegionData
+	//var requiredObj RegionData
 	var objFound bool
 	PolicyTxsAsBytes, err := stub.GetState(regionIndexTxStr)
 	if err != nil {
