@@ -28,7 +28,7 @@ type RegionData struct{
 	LINE_OF_BUSINESS_ID string `json:"LINE_OF_BUSINESS_ID"`
 	LINE_OF_BUSINESS string `json:"LINE_OF_BUSINESS"`
 	POLICY string `json:"POLICY"`
-	DEAL_ID int `json:"DEAL_ID"`
+	DEAL_ID string `json:"DEAL_ID"`
 	DEAL_NUM string `json:"DEAL_NUM"`
 	BROKER_ID string `json:"BROKER_ID"`
 	BROKER string `json:"BROKER"`
