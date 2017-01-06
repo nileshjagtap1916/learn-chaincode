@@ -58,7 +58,7 @@ func (t *RegionChaincode) Init(stub shim.ChaincodeStubInterface, function string
 }
 
 // Transaction makes payment of X units from A to B
-func (t *RegionChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
+func (t *RegionChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string, Deal_Id int) ([]byte, error) {
 	if function == regionIndexTxStr {		
 		return t.RegisterPolicy(stub, args)
 	}
@@ -83,14 +83,14 @@ func (t *RegionChaincode)  RegisterPolicy(stub shim.ChaincodeStubInterface, args
 	RegionDataObj.LINE_OF_BUSINESS_ID = args[4]
 	RegionDataObj.LINE_OF_BUSINESS = args[5]
 	RegionDataObj.POLICY = args[6]
-	RegionDataObj.DEAL_ID = args[7]
-	RegionDataObj.DEAL_NUM = args[8]
-	RegionDataObj.BROKER_ID = args[9]
-	RegionDataObj.BROKER = args[10]
-	RegionDataObj.INCEPTION_DATE = args[11]
-	RegionDataObj.EXPIRATION_DATE = args[12]
-	RegionDataObj.CARRIER_CD = args[13]
-	RegionDataObj.CARRIER = args[14]
+	RegionDataObj.DEAL_ID = Deal_Id
+	RegionDataObj.DEAL_NUM = args[7]
+	RegionDataObj.BROKER_ID = args[8]
+	RegionDataObj.BROKER = args[9]
+	RegionDataObj.INCEPTION_DATE = args[10]
+	RegionDataObj.EXPIRATION_DATE = args[11]
+	RegionDataObj.CARRIER_CD = args[12]
+	RegionDataObj.CARRIER = args[13]
 	
 	fmt.Printf("Input from user:%s\n", RegionDataObj)
 	
